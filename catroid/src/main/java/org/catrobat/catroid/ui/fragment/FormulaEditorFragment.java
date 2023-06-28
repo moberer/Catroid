@@ -421,7 +421,7 @@ public class FormulaEditorFragment extends Fragment implements ViewTreeObserver.
 		ColorPickerDialog dialog = ColorPickerDialog.Companion.newInstance(currentColor, true,
 				true);
 		Bitmap projectBitmap = ProjectManagerExtensionsKt
-				.getProjectBitmap(ProjectManager.getInstance());
+				.getProjectScreenshot(ProjectManager.getInstance());
 		dialog.setBitmap(projectBitmap);
 		dialog.addOnColorPickedListener(callback::setValue);
 		dialog.setStyle(STYLE_NORMAL, R.style.AlertDialogWithTitle);

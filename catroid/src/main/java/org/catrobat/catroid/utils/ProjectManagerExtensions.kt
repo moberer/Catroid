@@ -35,7 +35,7 @@ import org.catrobat.catroid.common.ScreenValues
 import java.io.File
 
 @SuppressWarnings("TooGenericExceptionCaught")
-fun ProjectManager.getProjectBitmap(): Bitmap {
+fun ProjectManager.getProjectScreenshot(): Bitmap {
     val projectDir = File(DEFAULT_ROOT_DIRECTORY, currentProject.name)
     val sceneDir = File(projectDir, currentlyPlayingScene.name)
     val automaticScreenshot = File(sceneDir, SCREENSHOT_AUTOMATIC_FILE_NAME)
@@ -47,15 +47,36 @@ fun ProjectManager.getProjectBitmap(): Bitmap {
         val backgroundBitmapPath: String = when {
             automaticScreenshot.exists() -> automaticScreenshot.path
             manualScreenshot.exists() -> manualScreenshot.path
-            else -> currentlyEditedScene.backgroundSprite.lookList[0].file.absolutePath
+            else -> throw IndexOutOfBoundsException();
         }
         BitmapFactory.decodeFile(backgroundBitmapPath, bitmapOptions)
     } catch (e: IndexOutOfBoundsException) {
-        Log.w("getProjectBitmap", "backgroundSprite has no looks! ${e.message}")
-        val screenWidth = ScreenValues.SCREEN_WIDTH
-        val screenHeight = ScreenValues.SCREEN_HEIGHT
-        val bitmap = Bitmap.createBitmap(screenWidth, screenHeight, Bitmap.Config.ARGB_8888)
-        bitmap.eraseColor(Color.WHITE)
-        bitmap
+        Log.w("getProjectScreenshot", "no project screenshot found! ${e.message}")
+        getProjectBackground()
     }
+}
+
+
+@SuppressWarnings("TooGenericExceptionCaught")
+fun ProjectManager.getProjectBackground(): Bitmap {
+    val bitmapOptions = BitmapFactory.Options()
+    bitmapOptions.inPreferredConfig = Bitmap.Config.ARGB_8888
+
+    return try {
+        val backgroundBitmapPath: String = currentlyEditedScene.backgroundSprite.lookList[0].file.absolutePath
+        BitmapFactory.decodeFile(backgroundBitmapPath, bitmapOptions)
+    } catch (e: IndexOutOfBoundsException) {
+        Log.w("getProjectBackground", "backgroundSprite has no looks! ${e.message}")
+        getProjectEmergencyBackground()
+    }
+}
+
+
+@SuppressWarnings("TooGenericExceptionCaught")
+fun ProjectManager.getProjectEmergencyBackground(): Bitmap {
+    val screenWidth = ScreenValues.SCREEN_WIDTH
+    val screenHeight = ScreenValues.SCREEN_HEIGHT
+    val bitmap = Bitmap.createBitmap(screenWidth, screenHeight, Bitmap.Config.ARGB_8888)
+    bitmap.eraseColor(Color.WHITE)
+    return bitmap;
 }

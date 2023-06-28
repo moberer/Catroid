@@ -101,7 +101,7 @@ public class ShowColorPickerFormulaEditorStrategy implements ShowFormulaEditorSt
 		ColorPickerDialog dialog = ColorPickerDialog.Companion.newInstance(currentColor, true,
 				true);
 		Bitmap projectBitmap = ProjectManagerExtensionsKt
-				.getProjectBitmap(ProjectManager.getInstance());
+				.getProjectScreenshot(ProjectManager.getInstance());
 		dialog.setBitmap(projectBitmap);
 		dialog.addOnColorPickedListener(callback::setValue);
 		dialog.show(fragmentManager, null);

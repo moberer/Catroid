@@ -249,7 +249,7 @@ public class VisualPlacementActivity extends BaseCastActivity implements View.On
 
 	private void setBackground() {
 		try {
-			Bitmap backgroundBitmap = ProjectManagerExtensionsKt.getProjectBitmap(projectManager);
+			Bitmap backgroundBitmap = ProjectManagerExtensionsKt.getProjectBackground(projectManager);
 			Bitmap scaledBackgroundBitmap = Bitmap.createScaledBitmap(backgroundBitmap,
 					(int) (backgroundBitmap.getWidth() * layoutWidthRatio),
 					(int) (backgroundBitmap.getHeight() * layoutHeightRatio), true);
