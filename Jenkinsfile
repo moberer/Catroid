@@ -78,6 +78,7 @@ pipeline {
                 letter-spacing: 1px;
                 font-style: italic;
                 """)
+        booleanParam name: 'CATBLOCKS_TESTS' defaultValue: true, description: 'When set, Catblocks tests are executed.'
         booleanParam name: 'PULL_REQUEST_SUITE', defaultValue: true, description: 'Enables Pull ' +
                 'request suite'
         booleanParam name: 'STANDALONE', defaultValue: true, description: 'When selected, ' +
@@ -92,6 +93,7 @@ pipeline {
         booleanParam name: 'RTL_TESTS', defaultValue: true, description: 'Enables RTL Tests'
         booleanParam name: 'OUTGOING_NETWORK_CALL_TESTS', defaultValue: false, description: 'Enables' +
                 'start Outgoing web tests'
+
     }
 
     options {
