@@ -24,7 +24,9 @@ package org.catrobat.catroid;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
+
 import android.util.Log;
 
 import com.google.gson.Gson;

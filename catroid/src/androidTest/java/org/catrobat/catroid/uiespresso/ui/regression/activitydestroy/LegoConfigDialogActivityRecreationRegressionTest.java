@@ -23,7 +23,7 @@
 
 package org.catrobat.catroid.uiespresso.ui.regression.activitydestroy;
 
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 
 import org.catrobat.catroid.R;
 import org.catrobat.catroid.content.Script;

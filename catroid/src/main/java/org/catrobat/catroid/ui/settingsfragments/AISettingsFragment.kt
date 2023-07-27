@@ -23,18 +23,22 @@
 package org.catrobat.catroid.ui.settingsfragments
 
 import android.os.Bundle
-import android.preference.PreferenceFragment
-import android.preference.PreferenceScreen
+import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceScreen
 import androidx.appcompat.app.AppCompatActivity
 import org.catrobat.catroid.BuildConfig
 import org.catrobat.catroid.R
 
 import org.catrobat.catroid.ui.settingsfragments.SettingsFragment.AI_SENSORS_SCREEN_KEY
 
-class AISettingsFragment : PreferenceFragment() {
+class AISettingsFragment : PreferenceFragmentCompat() {
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity).supportActionBar?.title = preferenceScreen.title
+    }
+
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        TODO("Not yet implemented")
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -43,8 +47,8 @@ class AISettingsFragment : PreferenceFragment() {
         addPreferencesFromResource(R.xml.ai_preferences)
         if (!BuildConfig.FEATURE_AI_SENSORS_ENABLED) {
             val aiSensorsPreference =
-                findPreference(AI_SENSORS_SCREEN_KEY) as PreferenceScreen
-            aiSensorsPreference.isEnabled = false
+                findPreference(AI_SENSORS_SCREEN_KEY) as PreferenceScreen?
+            aiSensorsPreference!!.isEnabled = false
             preferenceScreen.removePreference(aiSensorsPreference)
         }
     }

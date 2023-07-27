@@ -25,7 +25,9 @@ package org.catrobat.catroid.uiespresso.ui.activity.rtl;
 
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
+
 import android.view.View;
 
 import org.catrobat.catroid.common.Constants;

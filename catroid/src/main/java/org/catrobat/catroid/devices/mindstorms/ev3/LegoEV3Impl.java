@@ -24,7 +24,9 @@
 package org.catrobat.catroid.devices.mindstorms.ev3;
 
 import android.content.Context;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
+
 import android.util.Log;
 
 import org.catrobat.catroid.bluetooth.base.BluetoothConnection;

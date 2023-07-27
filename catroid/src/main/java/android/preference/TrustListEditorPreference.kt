@@ -21,7 +21,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package android.preference
+package androidx.preference
 
 import android.app.AlertDialog
 import android.content.Context
@@ -38,7 +38,8 @@ import org.catrobat.catroid.R
 import org.catrobat.catroid.TrustedDomainManager
 import org.catrobat.catroid.common.Constants
 
-class TrustListEditorPreference(context: Context, attrs: AttributeSet) : EditTextPreference(context, attrs) {
+class TrustListEditorPreference(context: Context, attrs: AttributeSet) : EditTextPreference
+    (context, attrs) {
     private val neutralButtonText = context.getString(R.string.brick_context_dialog_help)
 
     init {
@@ -46,6 +47,8 @@ class TrustListEditorPreference(context: Context, attrs: AttributeSet) : EditTex
         setPositiveButtonText(R.string.ok)
         setNegativeButtonText(R.string.cancel)
     }
+
+/* TODO fixme
 
     override fun showDialog(state: Bundle?) {
         val mBuilder = AlertDialog.Builder(context)
@@ -91,5 +94,5 @@ class TrustListEditorPreference(context: Context, attrs: AttributeSet) : EditTex
             (oldParent as? ViewGroup)?.removeView(editText)
             onAddEditTextToDialogView(view, editText)
         }
-    }
+    }*/
 }

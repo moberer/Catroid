@@ -24,7 +24,8 @@
 package org.catrobat.catroid.uiespresso.ui.fragment;
 
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
 
 import org.catrobat.catroid.R;
 import org.catrobat.catroid.common.ProjectData;

@@ -25,7 +25,8 @@ package org.catrobat.catroid.uiespresso.ui.activity;
 
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
 
 import org.catrobat.catroid.io.StorageOperations;
 import org.catrobat.catroid.testsuites.annotations.Cat;

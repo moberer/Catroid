@@ -29,13 +29,15 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
-import android.preference.PreferenceScreen;
 import android.util.DisplayMetrics;
+
+import androidx.annotation.Nullable;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceManager;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.ListPreference;
 
 import org.catrobat.catroid.BuildConfig;
 import org.catrobat.catroid.ProjectManager;
@@ -62,7 +64,7 @@ import static org.catrobat.catroid.common.SharedPreferenceKeys.LANGUAGE_TAGS;
 import static org.catrobat.catroid.common.SharedPreferenceKeys.LANGUAGE_TAG_KEY;
 import static org.koin.java.KoinJavaComponent.inject;
 
-public class SettingsFragment extends PreferenceFragment {
+public class SettingsFragment extends PreferenceFragmentCompat {
 
 	public static final String SETTINGS_MINDSTORMS_NXT_BRICKS_ENABLED = "settings_mindstorms_nxt_bricks_enabled";
 	public static final String SETTINGS_MINDSTORMS_NXT_SHOW_SENSOR_INFO_BOX_DISABLED = "settings_mindstorms_nxt_show_sensor_info_box_disabled";
@@ -144,7 +146,8 @@ public class SettingsFragment extends PreferenceFragment {
 		screen = getPreferenceScreen();
 
 		if (!BuildConfig.FEATURE_EMBROIDERY_ENABLED) {
-			CheckBoxPreference embroideryPreference = (CheckBoxPreference) findPreference(SETTINGS_SHOW_EMBROIDERY_BRICKS);
+			CheckBoxPreference embroideryPreference =
+					(androidx.preference.CheckBoxPreference) findPreference(SETTINGS_SHOW_EMBROIDERY_BRICKS);
 			embroideryPreference.setEnabled(false);
 			screen.removePreference(embroideryPreference);
 		}
@@ -201,10 +204,16 @@ public class SettingsFragment extends PreferenceFragment {
 	}
 
 	@Override
+	public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+
+	}
+
+	@Override
 	public void onResume() {
 		super.onResume();
 		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.preference_title);
 	}
+ /* TODO TODO
 
 	@Override
 	public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
@@ -250,7 +259,7 @@ public class SettingsFragment extends PreferenceFragment {
 				break;
 		}
 		return super.onPreferenceTreeClick(preferenceScreen, preference);
-	}
+	}*/
 
 	@SuppressWarnings("deprecation")
 	private void setHintPreferences() {
@@ -258,7 +267,11 @@ public class SettingsFragment extends PreferenceFragment {
 		hintCheckBoxPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				preference.getEditor().remove(SnackbarUtil.SHOWN_HINT_LIST).commit();
+				preference
+						.getSharedPreferences()
+						.edit()
+						.remove(SnackbarUtil.SHOWN_HINT_LIST)
+						.commit();
 				return true;
 			}
 		});

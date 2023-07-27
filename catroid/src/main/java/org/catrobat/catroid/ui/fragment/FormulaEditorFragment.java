@@ -32,7 +32,9 @@ import android.graphics.Rect;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
+
 import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;

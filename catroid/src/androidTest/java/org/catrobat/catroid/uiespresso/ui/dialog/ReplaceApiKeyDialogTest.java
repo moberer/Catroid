@@ -25,7 +25,9 @@ package org.catrobat.catroid.uiespresso.ui.dialog;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
+
 import android.util.Log;
 
 import com.google.common.base.Charsets;

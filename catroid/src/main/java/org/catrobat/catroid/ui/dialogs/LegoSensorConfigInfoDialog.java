@@ -26,7 +26,9 @@ package org.catrobat.catroid.ui.dialogs;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
+
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;

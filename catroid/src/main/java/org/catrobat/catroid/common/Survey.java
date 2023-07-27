@@ -25,7 +25,9 @@ package org.catrobat.catroid.common;
 
 import android.content.Context;
 import android.content.Intent;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
+
 import android.text.format.DateUtils;
 
 import org.catrobat.catroid.transfers.GetSurveyTask;

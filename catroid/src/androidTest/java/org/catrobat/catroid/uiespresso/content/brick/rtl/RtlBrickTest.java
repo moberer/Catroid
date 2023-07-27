@@ -24,7 +24,8 @@
 package org.catrobat.catroid.uiespresso.content.brick.rtl;
 
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
 
 import org.catrobat.catroid.ProjectManager;
 import org.catrobat.catroid.R;

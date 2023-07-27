@@ -25,7 +25,9 @@ package org.catrobat.catroid.uiespresso.intents.looks.paintroid;
 
 import android.app.Activity;
 import android.app.Instrumentation;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
+
 import android.util.Log;
 
 import org.catrobat.catroid.ProjectManager;

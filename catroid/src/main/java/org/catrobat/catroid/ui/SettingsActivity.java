@@ -29,31 +29,30 @@ import org.catrobat.catroid.R;
 import org.catrobat.catroid.ui.settingsfragments.AccessibilitySettingsFragment;
 import org.catrobat.catroid.ui.settingsfragments.SettingsFragment;
 
-import androidx.appcompat.widget.Toolbar;
-
 import static org.catrobat.catroid.ui.settingsfragments.AccessibilityProfilesFragment.SETTINGS_FRAGMENT_INTENT_KEY;
 
 public class SettingsActivity extends BaseActivity {
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.preference);
 
-		getFragmentManager().beginTransaction()
+		getSupportFragmentManager()
+				.beginTransaction()
 				.replace(R.id.content_frame, new SettingsFragment())
 				.commit();
 
-		if (getIntent().getExtras() != null && getIntent()
-				.getBooleanExtra(SETTINGS_FRAGMENT_INTENT_KEY, false)) {
+		if (getIntent().getExtras() != null &&
+				getIntent().getBooleanExtra(SETTINGS_FRAGMENT_INTENT_KEY, false)) {
 
-			getFragmentManager().beginTransaction()
+			getSupportFragmentManager()
+					.beginTransaction()
 					.replace(R.id.content_frame, new AccessibilitySettingsFragment())
 					.addToBackStack(AccessibilitySettingsFragment.TAG)
 					.commit();
 		}
 
-		setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+		setSupportActionBar(findViewById(R.id.toolbar));
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
 		getSupportActionBar().setTitle(R.string.preference_title);
